@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -7,10 +7,16 @@ import { HttpClient } from '@angular/common/http';
 export class CveService {
 
   constructor(private http:HttpClient) { }
-  readonly baseURL= 'http://localhost:50353/parcel/cves';
- 
-  getCVEs(){
+  readonly baseURL= 'https://localhost:44363/cves';
   
+
+  getCVEs(){
+    //console.log(this.http.get(this.baseURL))
+    //const headers = new HttpHeaders();
+    //headers.set('Content-Type', 'application/json;');
+    //headers.set('Content-Length', '140317');
+
     return this.http.get(this.baseURL);
+    
   }
 }
