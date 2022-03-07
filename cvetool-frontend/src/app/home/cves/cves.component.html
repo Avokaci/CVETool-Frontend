@@ -1,7 +1,8 @@
 <form novalidate #form="ngForm" (submit)="onSubmit(form)">
-    <h1>CVE</h1>
-    
-    <div class="form-group">
-      <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">Load all CVEs</button>
-    </div>
+  <h1>CVE</h1>
+  
+  <div class="form-group">
+    <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">Load all CVEs</button>
+  </div>
 </form>
+<app-data-table></app-data-table>
