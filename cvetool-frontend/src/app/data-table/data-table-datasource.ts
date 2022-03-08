@@ -42,9 +42,14 @@ export class DataTableDataSource extends DataSource<Cve> {
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
 
-  constructor() {
+  constructor( paramData: Cve[]) {
     super();
+    //debugger;
+    this.data = EXAMPLE_DATA;
+    console.log(this.data)
   }
+
+
 
   /**
    * Connect this data source to the table. The table will only update when

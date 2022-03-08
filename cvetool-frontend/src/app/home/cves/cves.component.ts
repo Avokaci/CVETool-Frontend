@@ -21,7 +21,7 @@ export class CVEsComponent implements OnInit {
     
   }
 
-  onSubmit(form:NgForm){
+ /* onSubmit(form:NgForm){
     this.service.getCVEs().subscribe(
        res =>{
           this.data = res;
@@ -33,4 +33,5 @@ export class CVEsComponent implements OnInit {
        }
      );
   }
+  */
 }
