@@ -23,9 +23,7 @@ export class DataTableComponent implements AfterViewInit {
   displayedColumns = ['CVEId', 'CWEId', 'VulnerabilityType', 'Description', 'PublishDate', 'UpdateDate', 'Score', 'ExploitExists', 'Access', 'Complexity', 'Authentication', 'Confidentiality', 'Integrity', 'Availability' ];
 
   constructor(public service:CveService) {
-    
-   this.service.getCVEs().subscribe(res=>{ this.data = res;
-      this.dataSource = new DataTableDataSource(this.data);}) 
+    //this.service.getCVEs().subscribe(res=>{ this.data = res;  this.dataSource = new DataTableDataSource(this.data);}) 
     this.dataSource = new DataTableDataSource(this.data);
   }
 
@@ -34,6 +32,7 @@ export class DataTableComponent implements AfterViewInit {
        res =>{
         this.data = res;
         this.dataSource = new DataTableDataSource(this.data);
+        this.ngAfterViewInit();
        }
        ,
        err => {

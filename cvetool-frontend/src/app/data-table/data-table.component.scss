@@ -1,3 +1,96 @@
-.full-width-table {
+
+table {
   width: 100%;
+  table-layout: fixed;
 }
+
+.mat-column-CVEId {
+  font-size: 10px;
+  width:15%;
+ 
+}
+
+.mat-column-CWEId {
+  font-size: 10px;
+  width: 15%;
+  text-align: center;
+ }
+
+ .mat-column-VulnerabilityType {
+  font-size: 10px;
+  width: 10%;
+  text-align: center;
+
+ }
+ 
+ .mat-column-Description {
+  font-size: 10px;
+  width: 1%;
+ }
+
+ .mat-column-PublishDate {
+  font-size: 10px;
+  width: 17%;
+  text-align: center;
+
+ }
+
+ .mat-column-UpdateDate {
+  font-size: 10px;
+  width: 17%;
+  text-align: center;
+
+ }
+
+ .mat-column-Score {
+  font-size: 10px;
+  width: 10%;
+  text-align: center;
+
+ }
+
+ .mat-column-ExploitExists {
+  font-size: 10px;
+  width: 10%;
+  text-align: center;
+
+ }
+
+ .mat-column-Access {
+  font-size: 10px;
+  width: 10%;
+  text-align: center;
+
+ }
+
+ .mat-column-Complexity {
+  font-size: 10px;
+  width: 15%;
+  text-align: center;
+
+ }
+
+ .mat-column-Authentication {
+  font-size: 10px;
+  width: 15%;
+  text-align: center;
+
+ }
+ .mat-column-Confidentiality {
+  font-size: 10px;
+  width: 15%;
+  text-align: center;
+
+ }
+ .mat-column-Integrity {
+  font-size: 10px;
+  width: 10%;
+  text-align: center;
+
+ }
+ .mat-column-Availability {
+  font-size: 10px;
+  width: 15%;
+  text-align: right;
+
+ }

@@ -1,34 +1,34 @@
 export class Cve {
-    CVEId:number;
-    CWEId:number;
-    VulnerabilityType:string;
-    Description:string;
-    PublishDate:string;
-    UpdateDate:string;
-    Score:number;
-    ExploitExists:string;
-    Access:string;
-    Complexity:string;
-    Authentication:string;
-    Confidentiality:string;
-    Integrity:string;
-    Availability:string;
+    cveId:string;
+    cweId:string;
+    vulnerabilityType:string;
+    description:string;
+    publishDate:string;
+    updateDate:string;
+    score:number;
+    exploitExists:string;
+    access:string;
+    complexity:string;
+    authentication:string;
+    confidentiality:string;
+    integrity:string;
+    availability:string;
 
     constructor(){
-        this.CVEId = 0;
-        this.CWEId = 0;
-        this.VulnerabilityType = '';
-        this.Description = '';
-        this.PublishDate = '';
-        this.UpdateDate ='';
-        this.Score =0;
-        this.ExploitExists ='';
-        this.Access = '';
-        this.Complexity ='';
-        this.Authentication ='';
-        this.Confidentiality='';
-        this.Integrity='';
-        this.Availability='';
+        this.cveId = '';
+        this.cweId = '';
+        this.vulnerabilityType = '';
+        this.description = '';
+        this.publishDate = '';
+        this.updateDate ='';
+        this.score =0;
+        this.exploitExists ='';
+        this.access = '';
+        this.complexity ='';
+        this.authentication ='';
+        this.confidentiality='';
+        this.integrity='';
+        this.availability='';
     }
 
 }

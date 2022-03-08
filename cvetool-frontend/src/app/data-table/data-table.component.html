@@ -2,7 +2,7 @@
   <h1>CVE</h1>
   
   <div class="form-group">
-    <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">Load all CVEs</button>
+    <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">Load CVEs</button>
   </div>
 </form>
 
@@ -15,87 +15,88 @@
     <!-- CVEId Column -->
     <ng-container matColumnDef="CVEId">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>CVE Id</th>
-      <td mat-cell *matCellDef="let row">{{row.CVEId}}</td>
+      <td mat-cell *matCellDef="let row">{{row.cveId}}</td>
     </ng-container>
 
     <!-- CWEId Column -->
     <ng-container matColumnDef="CWEId">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>CWE Id</th>
-      <td mat-cell *matCellDef="let row">{{row.CWEId}}</td>
+      <td mat-cell *matCellDef="let row">{{row.cweId}}</td>
     </ng-container>
 
      <!-- VulnerabilityType Column -->
      <ng-container matColumnDef="VulnerabilityType">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Vulnerability Type</th>
-      <td mat-cell *matCellDef="let row">{{row.VulnerabilityType}}</td>
-    </ng-container>
-
-     <!-- Description Column -->
-     <ng-container matColumnDef="Description">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
-      <td mat-cell *matCellDef="let row">{{row.Description}}</td>
+      <td mat-cell *matCellDef="let row">{{row.vulnerabilityType}}</td>
     </ng-container>
 
      <!-- PublishDate Column -->
      <ng-container matColumnDef="PublishDate">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Publish Date</th>
-      <td mat-cell *matCellDef="let row">{{row.PublishDate}}</td>
+      <td mat-cell *matCellDef="let row">{{row.publishDate}}</td>
     </ng-container>
 
      <!-- UpdateDate Column -->
      <ng-container matColumnDef="UpdateDate">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Update Date</th>
-      <td mat-cell *matCellDef="let row">{{row.UpdateDate}}</td>
+      <td mat-cell *matCellDef="let row">{{row.updateDate}}</td>
     </ng-container>
 
 
      <!-- Score Column -->
      <ng-container matColumnDef="Score">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Score</th>
-      <td mat-cell *matCellDef="let row">{{row.Score}}</td>
+      <td mat-cell *matCellDef="let row">{{row.score}}</td>
     </ng-container>
 
      <!-- ExploitExists Column -->
      <ng-container matColumnDef="ExploitExists">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Exploit Exists</th>
-      <td mat-cell *matCellDef="let row">{{row.ExploitExists}}</td>
+      <td mat-cell *matCellDef="let row">{{row.exploitExists}}</td>
     </ng-container>
 
      <!-- Access Column -->
      <ng-container matColumnDef="Access">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Access</th>
-      <td mat-cell *matCellDef="let row">{{row.Access}}</td>
+      <td mat-cell *matCellDef="let row">{{row.access}}</td>
     </ng-container>
 
      <!-- Complexity Column -->
      <ng-container matColumnDef="Complexity">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Complexity</th>
-      <td mat-cell *matCellDef="let row">{{row.Complexity}}</td>
+      <td mat-cell *matCellDef="let row">{{row.complexity}}</td>
     </ng-container>
 
      <!-- Authentication Column -->
      <ng-container matColumnDef="Authentication">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Authentication</th>
-      <td mat-cell *matCellDef="let row">{{row.Authentication}}</td>
+      <td mat-cell *matCellDef="let row">{{row.authentication}}</td>
     </ng-container>
 
      <!-- Confidentiality Column -->
      <ng-container matColumnDef="Confidentiality">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Confidentiality</th>
-      <td mat-cell *matCellDef="let row">{{row.Confidentiality}}</td>
+      <td mat-cell *matCellDef="let row">{{row.confidentiality}}</td>
     </ng-container>
 
      <!-- Integrity Column -->
      <ng-container matColumnDef="Integrity">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Integrity</th>
-      <td mat-cell *matCellDef="let row">{{row.Integrity}}</td>
+      <td mat-cell *matCellDef="let row">{{row.integrity}}</td>
     </ng-container>
 
      <!-- Availability Column -->
      <ng-container matColumnDef="Availability">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Availability</th>
-      <td mat-cell *matCellDef="let row">{{row.Availability}}</td>
+      <td mat-cell *matCellDef="let row">{{row.availability}}</td>
     </ng-container>
+
+
+      <!-- Description Column -->
+      <ng-container matColumnDef="Description">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+        <td mat-cell *matCellDef="let row">{{row.description}}</td>
+      </ng-container>
 
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
