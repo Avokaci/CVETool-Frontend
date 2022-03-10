@@ -6,7 +6,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { Cve } from '../shared/DTOs/cve.model';
 import { CveService } from '../shared/services/cve.service';
-
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-data-table',
@@ -34,6 +34,10 @@ export class DataTableComponent implements AfterViewInit {
   constructor(public service:CveService) {
     
 
+  }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   onSubmit(form:NgForm){

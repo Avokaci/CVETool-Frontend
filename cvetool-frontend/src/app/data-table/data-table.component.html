@@ -6,6 +6,12 @@
   </div>
 </form>
 
+
+<form appearance="standard">
+  <label>Search for CVE: </label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="CVE-1999-0001 ..." #input>
+</form>
+
 <div class="mat-elevation-z8 data-table">
   <table mat-table
        [dataSource]="dataSource" multiTemplateDataRows
@@ -34,6 +40,10 @@
       (click)="expandedElement = expandedElement === element ? null : element">
   </tr>
   <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+  </tr>
 </table>
 
   <mat-paginator #paginator
