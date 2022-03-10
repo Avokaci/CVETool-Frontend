@@ -1,102 +1,39 @@
-
 table {
   width: 120%;
-  table-layout: fixed;
 }
 .mat-paginator{
   display: flex;
   justify-content: center;
 
 }
-
-.mat-column-CVEId {
-  text-align: left;
-  font-size: 10px;
-  width:19%;
- 
+th,td{
+  text-align: center;
+}
+tr.example-detail-row {
+  height: 0;
 }
 
-.mat-column-CWEId {
-  font-size: 10px;
-  width: 14%;
-  text-align: center;
- }
+tr.example-element-row:not(.example-expanded-row):hover {
+  background: whitesmoke;
+}
 
- .mat-column-VulnerabilityType {
-  font-size: 10px;
-  width: 15%;
-  text-align: center;
+tr.example-element-row:not(.example-expanded-row):active {
+  background: #efefef;
+}
 
- }
- 
- .mat-column-Description {
-  font-size: 10px;
-  width: 1%;
- }
+.example-element-row td {
+  border-bottom-width: 0;
+}
 
- .mat-column-PublishDate {
-  font-size: 10px;
-  width: 17%;
-  text-align: center;
+.example-element-detail {
+  overflow: hidden;
+  display: flex;
+}
 
- }
+.example-element-description {
+  padding: 16px;
+}
 
- .mat-column-UpdateDate {
-  font-size: 10px;
-  width: 17%;
-  text-align: center;
-
- }
-
- .mat-column-Score {
-  font-size: 10px;
-  width: 10%;
-  text-align: center;
-
- }
-
- .mat-column-ExploitExists {
-  font-size: 10px;
-  width: 10%;
-  text-align: center;
-
- }
-
- .mat-column-Access {
-  font-size: 10px;
-  width: 10%;
-  text-align: center;
-
- }
-
- .mat-column-Complexity {
-  font-size: 10px;
-  width: 15%;
-  text-align: center;
-
- }
-
- .mat-column-Authentication {
-  font-size: 10px;
-  width: 15%;
-  text-align: center;
-
- }
- .mat-column-Confidentiality {
-  font-size: 10px;
-  width: 15%;
-  text-align: center;
-
- }
- .mat-column-Integrity {
-  font-size: 10px;
-  width: 10%;
-  text-align: center;
-
- }
- .mat-column-Availability {
-  font-size: 10px;
-  width: 15%;
-  text-align: right;
-
- }
+.example-element-description-attribution {
+  opacity: 0.5;
+}
