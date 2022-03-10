@@ -7,6 +7,7 @@ import { Cve } from '../shared/DTOs/cve.model';
 import { CveService } from '../shared/services/cve.service';
 import { DataTableDataSource } from './data-table-datasource';
 
+
 @Component({
   selector: 'app-data-table',
   templateUrl: './data-table.component.html',
@@ -20,7 +21,8 @@ export class DataTableComponent implements AfterViewInit {
   data: Cve[] =[];
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['CVEId', 'CWEId', 'VulnerabilityType', 'Description', 'PublishDate', 'UpdateDate', 'Score', 'ExploitExists', 'Access', 'Complexity', 'Authentication', 'Confidentiality', 'Integrity', 'Availability' ];
+  displayedColumns = ['CVEId', 'CWEId', 'VulnerabilityType', 'PublishDate', 'UpdateDate', 'Score', 'ExploitExists', 'Access', 'Complexity', 'Authentication', 'Confidentiality', 'Integrity', 'Availability' ];
+  displayedColumn2 = ['Description'];
 
   constructor(public service:CveService) {
     //this.service.getCVEs().subscribe(res=>{ this.data = res;  this.dataSource = new DataTableDataSource(this.data);}) 
@@ -40,6 +42,7 @@ export class DataTableComponent implements AfterViewInit {
        }
      );
   }
+ 
  
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;

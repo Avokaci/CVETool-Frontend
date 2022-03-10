@@ -1,24 +1,30 @@
 
 table {
-  width: 100%;
+  width: 120%;
   table-layout: fixed;
+}
+.mat-paginator{
+  display: flex;
+  justify-content: center;
+
 }
 
 .mat-column-CVEId {
+  text-align: left;
   font-size: 10px;
-  width:15%;
+  width:19%;
  
 }
 
 .mat-column-CWEId {
   font-size: 10px;
-  width: 15%;
+  width: 14%;
   text-align: center;
  }
 
  .mat-column-VulnerabilityType {
   font-size: 10px;
-  width: 10%;
+  width: 15%;
   text-align: center;
 
  }
