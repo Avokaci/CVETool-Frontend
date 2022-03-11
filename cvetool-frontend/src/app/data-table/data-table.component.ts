@@ -24,11 +24,15 @@ export class DataTableComponent implements AfterViewInit {
   columnsToDisplay  = ['cveId', 'cweId', 'vulnerabilityType', 'publishDate', 'updateDate', 'score', 'exploitExists', 'access', 'complexity', 'authentication', 'confidentiality', 'integrity', 'availability' ];
   dataSource = new MatTableDataSource<Cve>(ELEMENT_DATA);
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
   expandedElement: Cve | null = null;
   data: Cve[] =[];
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+
   }
 
   constructor(public service:CveService) {
@@ -38,6 +42,9 @@ export class DataTableComponent implements AfterViewInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
   onSubmit(form:NgForm){

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Cve } from '../DTOs/cve.model';
 
@@ -9,15 +9,14 @@ import { Cve } from '../DTOs/cve.model';
 export class CveService {
 
   constructor(private http:HttpClient) { }
-  readonly baseURL= 'https://localhost:44363/cves';
-  
+
+  filterAttribute:string='';
+  filterValue:string='';
 
   getCVEs(): Observable<Cve[]>{
-    //console.log(this.http.get(this.baseURL))
-    //const headers = new HttpHeaders();
-    //headers.set('Content-Type', 'application/json;');
-    //headers.set('Content-Length', '140317');
-    return this.http.get<Cve[]>(this.baseURL);
-    
+    var baseURL= 'https://localhost:44363/cves';
+    return this.http.get<Cve[]>(baseURL);   
   }
+
+
 }
