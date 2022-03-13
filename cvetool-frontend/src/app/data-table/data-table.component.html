@@ -1,11 +1,26 @@
-<form novalidate #form="ngForm" (submit)="onSubmit(form)">
-  <h1>CVE</h1>
-  
+<form novalidate #form="ngForm" (submit)="onSubmitgetAllCVEs(form)">
   <div class="form-group">
     <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">Load CVEs</button>
   </div>
 </form>
 
+<form novalidate #form="ngForm" (submit)="onSubmitgetAllFilteredCVEs(form)">
+  <div class="form-group">
+    <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">Load Filtered CVEs</button>
+  </div>
+</form>
+
+<form novalidate #form="ngForm" (submit)="onSubmitgetAllYearRangeFilteredCVEs(form)">
+  <div class="form-group">
+    <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">Load Year Range filtered CVEs</button>
+  </div>
+</form>
+
+<form novalidate #form="ngForm" (submit)="onSubmitgetAllScoreRangeFilteredCVEs(form)">
+  <div class="form-group">
+    <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">Load score Range filtered CVEs</button>
+  </div>
+</form>
 
 <form appearance="standard">
   <label>Search for CVE: </label>

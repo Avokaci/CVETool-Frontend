@@ -47,7 +47,7 @@ export class DataTableComponent implements AfterViewInit {
     }
   }
 
-  onSubmit(form:NgForm){
+  onSubmitgetAllCVEs(form:NgForm){
     this.service.getCVEs().subscribe(
        res =>{
         this.data = res;
@@ -61,6 +61,47 @@ export class DataTableComponent implements AfterViewInit {
      );
   }
  
+  onSubmitgetAllFilteredCVEs(form:NgForm){
+    this.service.getAllFilteredCVEs().subscribe(
+       res =>{
+        this.data = res;
+        this.dataSource = new MatTableDataSource<Cve>(this.data);
+        this.ngAfterViewInit();
+       }
+       ,
+       err => {
+         console.log(err);
+       }
+     );
+  }
+
+  onSubmitgetAllYearRangeFilteredCVEs(form:NgForm){
+    this.service.getAllYearRangeFilteredCVEs().subscribe(
+       res =>{
+        this.data = res;
+        this.dataSource = new MatTableDataSource<Cve>(this.data);
+        this.ngAfterViewInit();
+       }
+       ,
+       err => {
+         console.log(err);
+       }
+     );
+  }
+
+  onSubmitgetAllScoreRangeFilteredCVEs(form:NgForm){
+    this.service.getAllScoreRangeFilteredCVEs().subscribe(
+       res =>{
+        this.data = res;
+        this.dataSource = new MatTableDataSource<Cve>(this.data);
+        this.ngAfterViewInit();
+       }
+       ,
+       err => {
+         console.log(err);
+       }
+     );
+  }
  
  
 }
