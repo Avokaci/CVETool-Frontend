@@ -6,18 +6,24 @@
 
 <form novalidate #form="ngForm" (submit)="onSubmitgetAllFilteredCVEs(form)">
   <div class="form-group">
+    <input type="text" id="filteredAttribute" name="filteredAttribute" ng-model="filteredAttribute" placeholder="Attribute" ngModel required/>
+    <input type="text" id="filteredValue" name="filteredValue" ng-model="filteredValue"  placeholder="Value" ngModel required/>
     <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">Load Filtered CVEs</button>
   </div>
 </form>
 
 <form novalidate #form="ngForm" (submit)="onSubmitgetAllYearRangeFilteredCVEs(form)">
   <div class="form-group">
+    <input type="text" id="startYear" name="startYear" ng-model="startYear" placeholder="Start year" ngModel required/>
+    <input type="text"  id="endYear" name="endYear" ng-model="endYear" placeholder="End year" ngModel required/>
     <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">Load Year Range filtered CVEs</button>
   </div>
 </form>
 
 <form novalidate #form="ngForm" (submit)="onSubmitgetAllScoreRangeFilteredCVEs(form)">
   <div class="form-group">
+    <input type="text"  id="startScore" name="startScore" ng-model="startScore" placeholder="Start score" ngModel required/>
+    <input type="text" id="endScore"  name="endScore" ng-model="endScore" placeholder="End score" ngModel required/>
     <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">Load score Range filtered CVEs</button>
   </div>
 </form>
