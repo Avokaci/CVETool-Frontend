@@ -14,7 +14,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
-
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,10 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
     MatPaginatorModule,
     MatSortModule,
     MatFormFieldModule,
-    NgxSliderModule
+    NgxSliderModule,
+    MatOptionModule,
+    MatSelectModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

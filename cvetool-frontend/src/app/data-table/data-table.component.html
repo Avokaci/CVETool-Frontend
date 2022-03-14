@@ -5,7 +5,7 @@
   </div>
 </form>
 
-  <!-- Load all filtered CVEs -->
+  <!-- Load all filtered CVEs per Textbox-->
  <!-- <form novalidate #form="ngForm" (submit)="onSubmitgetAllFilteredCVEs(form)">
   <div class="form-group">
     <input type="text" id="filteredAttribute" name="filteredAttribute"   [(ngModel)]="filteredAttribute" placeholder="Attribute" ngModel required/>
@@ -17,9 +17,7 @@
   <!-- Load all CVEs between year range -->
 <form novalidate #form="ngForm" (submit)="onSubmitgetAllYearRangeFilteredCVEs(form)">
   <div class="form-group">
-    <!--
-    <input type="text" id="startYear" name="startYear"  placeholder="Start year" [(ngModel)]="startYear" ngModel required/>
-    <input type="text"  id="endYear" name="endYear"  placeholder="End year" [(ngModel)]="endYear" ngModel required/>  -->
+    <h1>Year range</h1>
     <ngx-slider [(value)]="yearValue" [(highValue)]="yearHighValue" [options]="yearOptions"></ngx-slider>
     <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">Load</button>
   </div>
@@ -29,12 +27,8 @@
   <!-- Load all CVEs between score range -->
 <form novalidate #form="ngForm" (submit)="onSubmitgetAllScoreRangeFilteredCVEs(form)">
   <div class="form-group">
-    <!--  
-    <input type="text"  id="startScore" name="startScore" placeholder="Start score" [(ngModel)]="startScore" ngModel required/>
-    <input type="text" id="endScore"  name="endScore"  placeholder="End score" [(ngModel)]="endScore" ngModel required/>
-    --> 
+    <h1>Score range</h1>
     <ngx-slider [(value)]="scoreValue" [(highValue)]="scoreHighValue" [options]="scoreOptions"></ngx-slider>
-
     <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">Load</button> 
   </div>
 </form>
@@ -42,75 +36,119 @@
 
 
   <!-- Load all vulnerability type filtered CVEs -->
-  <form novalidate #form="ngForm" (submit)="onSubmitgetAllScoreRangeFilteredCVEs(form)">
+  <form novalidate #form="ngForm" (submit)="onSubmitgetVulnFilteredCVEs(form)">
     <div class="form-group">
-     
+    <h1>Vulnerability</h1>
+    <mat-form-field appearance="fill">
+      <mat-label>Vulnerability</mat-label>
+      <mat-select [(value)]="selectedVuln">
+        <mat-option *ngFor="let vuln of vulnerabilities" [value]="vuln.value">
+          {{vuln.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
       <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">Load</button>
     </div>
   </form>
 
-  <!-- Load all specific year filtered CVEs -->
-  <form novalidate #form="ngForm" (submit)="onSubmitgetAllScoreRangeFilteredCVEs(form)">
+
+
+
+
+  <!-- Load all access filtered CVEs -->
+  <form novalidate #form="ngForm" (submit)="onSubmitgetAccessFilteredCVEs(form)">
     <div class="form-group">
-     
+    <h1>Access</h1>
+    <mat-form-field appearance="fill">
+      <mat-label>Access</mat-label>
+      <mat-select [(value)]="selectedAccess">
+        <mat-option *ngFor="let access of accesses" [value]="access.value">
+          {{access.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
       <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">Load</button>
     </div>
   </form>
 
 
-
-  <!-- Load all exploit exists filtered CVEs 
-  <form novalidate #form="ngForm" (submit)="onSubmitgetAllScoreRangeFilteredCVEs(form)">
-    <div class="form-group">
-     
-      <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">Load</button>
-    </div>
-  </form> -->
-
-    <!-- Load all access filtered CVEs -->
-    <form novalidate #form="ngForm" (submit)="onSubmitgetAllScoreRangeFilteredCVEs(form)">
-      <div class="form-group">
-       
-        <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">Load</button>
-      </div>
-    </form>
 
       <!-- Load all complexity filtered CVEs -->
-  <form novalidate #form="ngForm" (submit)="onSubmitgetAllScoreRangeFilteredCVEs(form)">
-    <div class="form-group">
-     
-      <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">Load</button>
-    </div>
-  </form>
+      <form novalidate #form="ngForm" (submit)="onSubmitgetComplexityFilteredCVEs(form)">
+        <div class="form-group">
+        <h1>Complexity</h1>
+        <mat-form-field appearance="fill">
+          <mat-label>Complexity</mat-label>
+          <mat-select [(value)]="selectedComplexity">
+            <mat-option *ngFor="let compl of complexities" [value]="compl.value">
+              {{compl.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+          <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">Load</button>
+        </div>
+      </form>
+
 
     <!-- Load all authentication  filtered CVEs -->
-    <form novalidate #form="ngForm" (submit)="onSubmitgetAllScoreRangeFilteredCVEs(form)">
+    <form novalidate #form="ngForm" (submit)="onSubmitgetAuthFilteredCVEs(form)">
       <div class="form-group">
-       
+      <h1>Authentication</h1>
+      <mat-form-field appearance="fill">
+        <mat-label>Authentication</mat-label>
+        <mat-select [(value)]="selectedAuth">
+          <mat-option *ngFor="let auth of authentications" [value]="auth.value">
+            {{auth.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
         <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">Load</button>
       </div>
     </form>
 
       <!-- Load all confidentiality filtered CVEs -->
-  <form novalidate #form="ngForm" (submit)="onSubmitgetAllScoreRangeFilteredCVEs(form)">
-    <div class="form-group">
-     
-      <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">Load</button>
-    </div>
-  </form>
-
-      <!-- Load all integrity filtered CVEs -->
-      <form novalidate #form="ngForm" (submit)="onSubmitgetAllScoreRangeFilteredCVEs(form)">
+      <form novalidate #form="ngForm" (submit)="onSubmitgetConfidentialityFilteredCVEs(form)">
         <div class="form-group">
-         
+        <h1>Confidentiality</h1>
+        <mat-form-field appearance="fill">
+          <mat-label>Confidentiality</mat-label>
+          <mat-select [(value)]="selectedConf">
+            <mat-option *ngFor="let conf of cia" [value]="conf.value">
+              {{conf.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
           <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">Load</button>
         </div>
       </form>
 
-      <!-- Load all availability filtered CVEs -->
-      <form novalidate #form="ngForm" (submit)="onSubmitgetAllScoreRangeFilteredCVEs(form)">
+      <!-- Load all integrity filtered CVEs -->
+      <form novalidate #form="ngForm" (submit)="onSubmitgetIntegrityFilteredCVEs(form)">
         <div class="form-group">
-         
+        <h1>Integrity</h1>
+        <mat-form-field appearance="fill">
+          <mat-label>Integrity</mat-label>
+          <mat-select [(value)]="selectedInteg">
+            <mat-option *ngFor="let inte of cia" [value]="inte.value">
+              {{inte.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+          <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">Load</button>
+        </div>
+      </form>
+      <!-- Load all availability filtered CVEs -->
+      <form novalidate #form="ngForm" (submit)="onSubmitgetAvailabilityFilteredCVEs(form)">
+        <div class="form-group">
+        <h1>Availability</h1>
+        <mat-form-field appearance="fill">
+          <mat-label>Availability</mat-label>
+          <mat-select [(value)]="selectedAvail">
+            <mat-option *ngFor="let avai of cia" [value]="avai.value">
+              {{avai.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
           <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">Load</button>
         </div>
       </form>

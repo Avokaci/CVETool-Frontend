@@ -29,13 +29,56 @@ export class DataTableComponent implements AfterViewInit {
 
   expandedElement: Cve | null = null;
   data: Cve[] =[];
-  filteredAttribute:string='';
-  filteredValue:string='';
-  startYear:number=0;
-  endYear:number=0;
-  startScore:string='';
-  endScore:string='';
+ 
 
+  //vulnerability Filter
+  vulnerabilities: FilterView[] = [
+    {value: 'dos', viewValue: 'DoS'},
+    {value: 'code execution', viewValue: 'Code Execution'},
+    {value: 'overflow', viewValue: 'Overflow'},
+    {value: 'memory corruption', viewValue: 'Memory Corruption'},
+    {value: 'sql injection', viewValue: 'SQL Injection'},
+    {value: 'xss', viewValue: 'XSS'},
+    {value: 'directory traversal', viewValue: 'Directory Traversal'},
+    {value: 'http Response Splitting', viewValue: 'HTTP Response Splitting'},
+    {value: 'bypass Something', viewValue: 'Bypass Something'},
+    {value: 'gain Information', viewValue: 'Gain Information'},
+    {value: 'gain Privileges', viewValue: 'Gain Privileges'},
+    {value: 'csrf', viewValue: 'CSRF'},
+    {value: 'file Inclusion', viewValue: 'File Inclusion'},
+  ];
+  selectedVuln = 'None';
+
+  accesses: FilterView[] = [
+    {value: 'ADJACENT_NETWORK', viewValue: 'Adjacent Network'},
+    {value: 'LOCAL', viewValue: 'Local'},
+    {value: 'NETWORK', viewValue: 'Network'}
+  ];
+  selectedAccess = 'None';
+ 
+  complexities: FilterView[] = [
+    {value: 'HIGH', viewValue: 'High'},
+    {value: 'LOW', viewValue: 'Low'},
+    {value: 'MEDIUM', viewValue: 'Medium'}
+  ];
+  selectedComplexity = 'None';
+
+  authentications: FilterView[] = [
+    {value: 'MULTIPLE', viewValue: 'Multiple'},
+    {value: 'NONE', viewValue: 'None'},
+    {value: 'SINGLE', viewValue: 'Single'}
+  ];
+  selectedAuth= 'None';
+
+  cia: FilterView[] = [
+    {value: 'COMPLETE', viewValue: 'Complete'},
+    {value: 'NONE', viewValue: 'None'},
+    {value: 'PARTIAL', viewValue: 'Partial'}
+  ];
+  selectedConf= 'None';
+  selectedInteg= 'None';
+  selectedAvail= 'None';
+  
   //Year range slider
   yearValue: number = 1988;
   yearHighValue: number = new Date().getFullYear();
@@ -53,14 +96,14 @@ export class DataTableComponent implements AfterViewInit {
   };
  
 
+  
+
+  constructor(public service:CveService) {
+  }
+
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-
-  }
-
-  constructor(public service:CveService) {
-    
 
   }
   applyFilter(event: Event) {
@@ -71,8 +114,10 @@ export class DataTableComponent implements AfterViewInit {
     // }
   }
 
+ 
 
 
+  //submit button get all cves
   onSubmitgetAllCVEs(form:NgForm){
     this.service.getCVEs().subscribe(
        res =>{
@@ -87,20 +132,24 @@ export class DataTableComponent implements AfterViewInit {
      );
   }
  
-  onSubmitgetAllFilteredCVEs(form:NgForm){
-    this.service.getAllFilteredCVEs(this.filteredAttribute,this.filteredValue ).subscribe(
-       res =>{
-        this.data = res;
-        this.dataSource = new MatTableDataSource<Cve>(this.data);
-        this.ngAfterViewInit();
-       }
-       ,
-       err => {
-         console.log(err);
-       }
-     );
-  }
+  //submit button get all filtered cves
+  // filteredAttribute:string='';
+  // filteredValue:string='';
+  // onSubmitgetAllFilteredCVEs(form:NgForm){
+  //   this.service.getAllFilteredCVEs(this.filteredAttribute,this.filteredValue ).subscribe(
+  //      res =>{
+  //       this.data = res;
+  //       this.dataSource = new MatTableDataSource<Cve>(this.data);
+  //       this.ngAfterViewInit();
+  //      }
+  //      ,
+  //      err => {
+  //        console.log(err);
+  //      }
+  //    );
+  // }
 
+  //submit button get all year range filtered cves
   onSubmitgetAllYearRangeFilteredCVEs(form:NgForm){
     this.service.getAllYearRangeFilteredCVEs(this.yearValue.toString(), this.yearHighValue.toString()).subscribe(
        res =>{
@@ -115,6 +164,7 @@ export class DataTableComponent implements AfterViewInit {
      );
   }
 
+  //submit button get all score range filtered cves
   onSubmitgetAllScoreRangeFilteredCVEs(form:NgForm){
     this.service.getAllScoreRangeFilteredCVEs(this.scoreValue.toString(), this.scoreHighValue.toString()).subscribe(
        res =>{
@@ -128,8 +178,117 @@ export class DataTableComponent implements AfterViewInit {
        }
      );
   }
+
+  //submit button get all vuln Type filtered cves
+  onSubmitgetVulnFilteredCVEs(form:NgForm){
+    this.service.getAllFilteredCVEs("VulnerabilityType",this.selectedVuln ).subscribe(
+       res =>{
+        this.data = res;
+        this.dataSource = new MatTableDataSource<Cve>(this.data);
+        this.ngAfterViewInit();
+       }
+       ,
+       err => {
+         console.log(err);
+       }
+     );
+  }
+ //submit button get all Access filtered cves
+ onSubmitgetAccessFilteredCVEs(form:NgForm){
+  this.service.getAllFilteredCVEs("Access",this.selectedAccess ).subscribe(
+     res =>{
+      this.data = res;
+      this.dataSource = new MatTableDataSource<Cve>(this.data);
+      this.ngAfterViewInit();
+     }
+     ,
+     err => {
+       console.log(err);
+     }
+   );
+}
+   //submit button get all Complexity filtered cves
+ onSubmitgetComplexityFilteredCVEs(form:NgForm){
+  this.service.getAllFilteredCVEs("Complexity",this.selectedComplexity ).subscribe(
+     res =>{
+      this.data = res;
+      this.dataSource = new MatTableDataSource<Cve>(this.data);
+      this.ngAfterViewInit();
+     }
+     ,
+     err => {
+       console.log(err);
+     }
+   );
+}
+
+   //submit button get all Authentication filtered cves
+   onSubmitgetAuthFilteredCVEs(form:NgForm){
+  this.service.getAllFilteredCVEs("Authentication",this.selectedAuth ).subscribe(
+     res =>{
+      this.data = res;
+      this.dataSource = new MatTableDataSource<Cve>(this.data);
+      this.ngAfterViewInit();
+     }
+     ,
+     err => {
+       console.log(err);
+     }
+   );
+}
+  
+ //submit button get all Confidentialities filtered cves
+ onSubmitgetConfidentialityFilteredCVEs(form:NgForm){
+  this.service.getAllFilteredCVEs("Confidentiality",this.selectedConf ).subscribe(
+     res =>{
+      this.data = res;
+      this.dataSource = new MatTableDataSource<Cve>(this.data);
+      this.ngAfterViewInit();
+     }
+     ,
+     err => {
+       console.log(err);
+     }
+   );
+}
+
+//submit button get all Confidentialities filtered cves
+onSubmitgetIntegrityFilteredCVEs(form:NgForm){
+  this.service.getAllFilteredCVEs("Integrity",this.selectedInteg ).subscribe(
+     res =>{
+      this.data = res;
+      this.dataSource = new MatTableDataSource<Cve>(this.data);
+      this.ngAfterViewInit();
+     }
+     ,
+     err => {
+       console.log(err);
+     }
+   );
+}
+
+//submit button get all Confidentialities filtered cves
+onSubmitgetAvailabilityFilteredCVEs(form:NgForm){
+  this.service.getAllFilteredCVEs("Avaialability",this.selectedAvail ).subscribe(
+     res =>{
+      this.data = res;
+      this.dataSource = new MatTableDataSource<Cve>(this.data);
+      this.ngAfterViewInit();
+     }
+     ,
+     err => {
+       console.log(err);
+     }
+   );
+}
  
  
+}
+
+
+interface FilterView {
+  value: string;
+  viewValue: string;
 }
 
 const ELEMENT_DATA: Cve[] = [

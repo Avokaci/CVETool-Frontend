@@ -23,8 +23,6 @@ export class CveService {
   }
 
   getAllFilteredCVEs(filterAttribute:string, filterValue:string): Observable<Cve[]>{
-    // this.filterAttribute = 'Access';
-    // this.filterValue = 'NETWORK'
     var baseURL= 'https://localhost:44363/cves/filtered/'+filterAttribute+'/'+filterValue;
     const params = new HttpParams()
     .append('attribute', filterAttribute)
@@ -33,8 +31,6 @@ export class CveService {
   }
 
   getAllYearRangeFilteredCVEs(startYear:string, endYear:string): Observable<Cve[]>{
-    // this.startYear = '2014';
-    // this.endYear = '2016';
     var baseURL= 'https://localhost:44363/cves/filtered/year/'+ startYear+'/range/'+endYear;
     const params = new HttpParams()
     .append('startYear', startYear)
@@ -43,12 +39,12 @@ export class CveService {
   }
 
   getAllScoreRangeFilteredCVEs(startScore:string, endScore:string): Observable<Cve[]>{
-    // this.startScore = 4;
-    // this.endScore = 6;
     var baseURL= 'https://localhost:44363/cves/filtered/score/'+startScore+'/range/'+endScore;
     const params = new HttpParams()
     .append('startScore', startScore)
     .append('endScore', endScore);
     return this.http.get<Cve[]>(baseURL,{params});   
   }
+
+ 
 }
