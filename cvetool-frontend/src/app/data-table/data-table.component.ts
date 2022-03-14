@@ -7,6 +7,7 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { Cve } from '../shared/DTOs/cve.model';
 import { CveService } from '../shared/services/cve.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { Options } from '@angular-slider/ngx-slider';
 
 @Component({
   selector: 'app-data-table',
@@ -28,6 +29,29 @@ export class DataTableComponent implements AfterViewInit {
 
   expandedElement: Cve | null = null;
   data: Cve[] =[];
+  filteredAttribute:string='';
+  filteredValue:string='';
+  startYear:number=0;
+  endYear:number=0;
+  startScore:string='';
+  endScore:string='';
+
+  //Year range slider
+  yearValue: number = 1988;
+  yearHighValue: number = new Date().getFullYear();
+  yearOptions: Options = {
+    floor: this.yearValue,
+    ceil: this.yearHighValue
+  };
+
+   //Score range slider
+   scoreValue: number = 0;
+  scoreHighValue: number = 10;
+  scoreOptions: Options = {
+    floor: this.scoreValue,
+    ceil: this.scoreHighValue
+  };
+ 
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -42,10 +66,12 @@ export class DataTableComponent implements AfterViewInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+    // if (this.dataSource.paginator) {
+    //   this.dataSource.paginator.firstPage();
+    // }
   }
+
+
 
   onSubmitgetAllCVEs(form:NgForm){
     this.service.getCVEs().subscribe(
@@ -62,7 +88,7 @@ export class DataTableComponent implements AfterViewInit {
   }
  
   onSubmitgetAllFilteredCVEs(form:NgForm){
-    this.service.getAllFilteredCVEs().subscribe(
+    this.service.getAllFilteredCVEs(this.filteredAttribute,this.filteredValue ).subscribe(
        res =>{
         this.data = res;
         this.dataSource = new MatTableDataSource<Cve>(this.data);
@@ -76,7 +102,7 @@ export class DataTableComponent implements AfterViewInit {
   }
 
   onSubmitgetAllYearRangeFilteredCVEs(form:NgForm){
-    this.service.getAllYearRangeFilteredCVEs().subscribe(
+    this.service.getAllYearRangeFilteredCVEs(this.yearValue.toString(), this.yearHighValue.toString()).subscribe(
        res =>{
         this.data = res;
         this.dataSource = new MatTableDataSource<Cve>(this.data);
@@ -90,7 +116,7 @@ export class DataTableComponent implements AfterViewInit {
   }
 
   onSubmitgetAllScoreRangeFilteredCVEs(form:NgForm){
-    this.service.getAllScoreRangeFilteredCVEs().subscribe(
+    this.service.getAllScoreRangeFilteredCVEs(this.scoreValue.toString(), this.scoreHighValue.toString()).subscribe(
        res =>{
         this.data = res;
         this.dataSource = new MatTableDataSource<Cve>(this.data);
