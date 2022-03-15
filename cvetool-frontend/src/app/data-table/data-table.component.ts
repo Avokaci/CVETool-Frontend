@@ -47,37 +47,37 @@ export class DataTableComponent implements AfterViewInit {
     {value: 'csrf', viewValue: 'CSRF'},
     {value: 'file Inclusion', viewValue: 'File Inclusion'},
   ];
-  selectedVuln = 'None';
+  selectedVuln = '';
 
   accesses: FilterView[] = [
     {value: 'ADJACENT_NETWORK', viewValue: 'Adjacent Network'},
     {value: 'LOCAL', viewValue: 'Local'},
     {value: 'NETWORK', viewValue: 'Network'}
   ];
-  selectedAccess = 'None';
+  selectedAccess = '';
  
   complexities: FilterView[] = [
     {value: 'HIGH', viewValue: 'High'},
     {value: 'LOW', viewValue: 'Low'},
     {value: 'MEDIUM', viewValue: 'Medium'}
   ];
-  selectedComplexity = 'None';
+  selectedComplexity = '';
 
   authentications: FilterView[] = [
     {value: 'MULTIPLE', viewValue: 'Multiple'},
     {value: 'NONE', viewValue: 'None'},
     {value: 'SINGLE', viewValue: 'Single'}
   ];
-  selectedAuth= 'None';
+  selectedAuth= '';
 
   cia: FilterView[] = [
     {value: 'COMPLETE', viewValue: 'Complete'},
     {value: 'NONE', viewValue: 'None'},
     {value: 'PARTIAL', viewValue: 'Partial'}
   ];
-  selectedConf= 'None';
-  selectedInteg= 'None';
-  selectedAvail= 'None';
+  selectedConf= '';
+  selectedInteg= '';
+  selectedAvail= '';
   
   //Year range slider
   yearValue: number = 1988;
