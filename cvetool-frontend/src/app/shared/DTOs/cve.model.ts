@@ -6,7 +6,7 @@ export class Cve {
     publishDate:string;
     updateDate:string;
     score:number;
-    exploitExists:string;
+    searchExploit:string;
     access:string;
     complexity:string;
     authentication:string;
@@ -22,7 +22,7 @@ export class Cve {
         this.publishDate = '';
         this.updateDate ='';
         this.score =0;
-        this.exploitExists ='';
+        this.searchExploit ='';
         this.access = '';
         this.complexity ='';
         this.authentication ='';
