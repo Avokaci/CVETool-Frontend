@@ -11,7 +11,6 @@ label{
   width: 100%;
 }
 
-
 th,td{
   text-align: center;
   font-size: 11px;
@@ -47,15 +46,13 @@ tr.example-element-row:not(.example-expanded-row):active {
 }
 
 
-
-.mat-form-field{
-  width: 60%;
-  font-size: small;
-}
-
 .ngx-slider{
-  width: 60%;
+  width: 90%;
 }
-.btn{
-  margin-left: 10px;
+
+.btn {
+  left: 37%;
+  position: relative;
+
+
 }
