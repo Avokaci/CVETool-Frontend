@@ -13,28 +13,28 @@
       </form> -->
 
         <!-- Load all CVEs between year range -->
-      <form novalidate #form="ngForm" (submit)="onSubmitgetAllYearRangeFilteredCVEs(form)">
+      <form novalidate #formYearRange="ngForm" (submit)="onSubmitgetAllYearRangeFilteredCVEs(formYearRange)">
         <div class="form-group">
           <h5>Year range</h5>
           <ngx-slider [(value)]="yearValue" [(highValue)]="yearHighValue" [options]="yearOptions"></ngx-slider>
-          <button class="btn btn-success btn-sm btn-block" type="submit" [disabled]="form.invalid">Load</button>
+          <button class="btn btn-success btn-sm btn-block" type="submit" >Load</button>
         </div>
       </form>
 
 
         <!-- Load all CVEs between score range -->
-      <form novalidate #form="ngForm" (submit)="onSubmitgetAllScoreRangeFilteredCVEs(form)">
+      <form novalidate #formScoreRange="ngForm" (submit)="onSubmitgetAllScoreRangeFilteredCVEs(formScoreRange)">
         <div class="form-group">
           <h5>Score range</h5>
           <ngx-slider [(value)]="scoreValue" [(highValue)]="scoreHighValue" [options]="scoreOptions"></ngx-slider>
-          <button class="btn btn-success btn-sm btn-block" type="submit" [disabled]="form.invalid">Load</button> 
+          <button class="btn btn-success btn-sm btn-block" type="submit" >Load</button> 
         </div>
       </form>
 
         <!-- Load all CVEs -->
-        <form novalidate #form="ngForm" (submit)="onSubmitclearFilters()">
+        <form novalidate #formAllCVE="ngForm" (submit)="onSubmitclearFilters()">
           <div class="form-group">
-            <button class="btn btn-success btn-sm btn-block" type="submit" [disabled]="form.invalid">Clear Filters</button>
+            <button class="btn btn-success btn-sm btn-block" type="submit" >Clear Filters</button>
           </div>
         </form>
   
@@ -44,7 +44,7 @@
 
   <div class="col-sm">
       <!-- Load all vulnerability type filtered CVEs -->
-      <form novalidate #form="ngForm" (submit)="onSubmitgetVulnFilteredCVEs(form)">
+      <form novalidate #formVuln="ngForm" (submit)="onSubmitgetVulnFilteredCVEs(formVuln)">
         <div class="form-group">
         <h5>Vulnerability</h5>
         <mat-form-field appearance="fill">
@@ -55,12 +55,12 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-          <button class="btn btn-success btn-sm btn-block" type="submit" [disabled]="form.invalid">Load</button>
+          <button class="btn btn-success btn-sm btn-block" type="submit" >Load</button>
         </div>
       </form>
 
       <!-- Load all access filtered CVEs -->
-      <form novalidate #form="ngForm" (submit)="onSubmitgetAccessFilteredCVEs(form)">
+      <form novalidate #formAccess="ngForm" (submit)="onSubmitgetAccessFilteredCVEs(formAccess)">
         <div class="form-group">
         <h5>Access</h5>
         <mat-form-field appearance="fill">
@@ -71,12 +71,12 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-          <button class="btn btn-success btn-sm btn-block" type="submit" [disabled]="form.invalid">Load</button>
+          <button class="btn btn-success btn-sm btn-block" type="submit" >Load</button>
         </div>
       </form>
 
           <!-- Load all complexity filtered CVEs -->
-          <form novalidate #form="ngForm" (submit)="onSubmitgetComplexityFilteredCVEs(form)">
+          <form novalidate #formCompl="ngForm" (submit)="onSubmitgetComplexityFilteredCVEs(formCompl)">
             <div class="form-group">
             <h5>Complexity</h5>
             <mat-form-field appearance="fill">
@@ -87,13 +87,13 @@
                 </mat-option>
               </mat-select>
             </mat-form-field>
-              <button class="btn btn-success btn-sm btn-block" type="submit" [disabled]="form.invalid">Load</button>
+              <button class="btn btn-success btn-sm btn-block" type="submit" >Load</button>
             </div>
           </form>
 
 
         <!-- Load all authentication  filtered CVEs -->
-        <form novalidate #form="ngForm" (submit)="onSubmitgetAuthFilteredCVEs(form)">
+        <form novalidate #formAuth="ngForm" (submit)="onSubmitgetAuthFilteredCVEs(formAuth)">
           <div class="form-group">
           <h5>Authentication</h5>
           <mat-form-field appearance="fill">
@@ -104,7 +104,7 @@
               </mat-option>
             </mat-select>
           </mat-form-field>
-            <button class="btn btn-success btn-sm btn-block" type="submit" [disabled]="form.invalid">Load</button>
+            <button class="btn btn-success btn-sm btn-block" type="submit" >Load</button>
           </div>
         </form>
   </div>
@@ -112,7 +112,7 @@
 
   <div class="col-sm">
       <!-- Load all confidentiality filtered CVEs -->
-      <form novalidate #form="ngForm" (submit)="onSubmitgetConfidentialityFilteredCVEs(form)">
+      <form novalidate #formConf="ngForm" (submit)="onSubmitgetConfidentialityFilteredCVEs(formConf)">
         <div class="form-group">
         <h5>CIA Triad</h5>
         <mat-form-field appearance="fill">
@@ -123,12 +123,12 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-          <button class="btn btn-success btn-sm btn-block" type="submit" [disabled]="form.invalid">Load</button>
+          <button class="btn btn-success btn-sm btn-block" type="submit" >Load</button>
         </div>
       </form>
 
       <!-- Load all integrity filtered CVEs -->
-      <form novalidate #form="ngForm" (submit)="onSubmitgetIntegrityFilteredCVEs(form)">
+      <form novalidate #formInteg="ngForm" (submit)="onSubmitgetIntegrityFilteredCVEs(formInteg)">
         <div class="form-group">
         <mat-form-field appearance="fill">
           <mat-label>Integrity</mat-label>
@@ -138,11 +138,11 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-          <button class="btn btn-success btn-sm btn-block" type="submit" [disabled]="form.invalid">Load</button>
+          <button class="btn btn-success btn-sm btn-block" type="submit" >Load</button>
         </div>
       </form>
       <!-- Load all availability filtered CVEs -->
-      <form novalidate #form="ngForm" (submit)="onSubmitgetAvailabilityFilteredCVEs(form)">
+      <form novalidate #formAvai="ngForm" (submit)="onSubmitgetAvailabilityFilteredCVEs(formAvai)">
         <div class="form-group">
         <mat-form-field appearance="fill">
           <mat-label>Availability</mat-label>
@@ -152,7 +152,7 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-          <button class="btn btn-success btn-sm btn-block" type="submit" [disabled]="form.invalid">Load</button>
+          <button class="btn btn-success btn-sm btn-block" type="submit" >Load</button>
         </div>
       </form>
     </div>
