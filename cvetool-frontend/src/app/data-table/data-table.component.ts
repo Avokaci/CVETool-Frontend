@@ -23,6 +23,8 @@ import { Options } from '@angular-slider/ngx-slider';
 })
 export class DataTableComponent implements AfterViewInit {
   columnsToDisplay  = ['cveId', 'cweId', 'vulnerabilityType', 'publishDate', 'updateDate', 'score', 'searchExploit', 'access', 'complexity', 'authentication', 'confidentiality', 'integrity', 'availability' ];
+ 
+  
   dataSource = new MatTableDataSource<Cve>(ELEMENT_DATA);
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -49,6 +51,7 @@ export class DataTableComponent implements AfterViewInit {
   ];
   selectedVuln = '';
 
+  //access Filter
   accesses: FilterView[] = [
     {value: 'ADJACENT_NETWORK', viewValue: 'Adjacent Network'},
     {value: 'LOCAL', viewValue: 'Local'},
@@ -56,6 +59,7 @@ export class DataTableComponent implements AfterViewInit {
   ];
   selectedAccess = '';
  
+  //complexity Filter
   complexities: FilterView[] = [
     {value: 'HIGH', viewValue: 'High'},
     {value: 'LOW', viewValue: 'Low'},
@@ -63,6 +67,7 @@ export class DataTableComponent implements AfterViewInit {
   ];
   selectedComplexity = '';
 
+  //authentication Filter
   authentications: FilterView[] = [
     {value: 'MULTIPLE', viewValue: 'Multiple'},
     {value: 'NONE', viewValue: 'None'},
@@ -70,6 +75,7 @@ export class DataTableComponent implements AfterViewInit {
   ];
   selectedAuth= '';
 
+  //cia Filter
   cia: FilterView[] = [
     {value: 'COMPLETE', viewValue: 'Complete'},
     {value: 'NONE', viewValue: 'None'},
@@ -99,6 +105,8 @@ export class DataTableComponent implements AfterViewInit {
   
 
   constructor(public service:CveService) {
+    this.onSubmitclearFilters();
+    this.ngAfterViewInit();
   }
 
   ngAfterViewInit() {
@@ -118,7 +126,7 @@ export class DataTableComponent implements AfterViewInit {
 
 
   //submit button get all cves
-  onSubmitgetAllCVEs(form:NgForm){
+  onSubmitclearFilters(){
     this.service.getCVEs().subscribe(
        res =>{
         this.data = res;
