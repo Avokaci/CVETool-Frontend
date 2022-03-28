@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm">
+    <div class="col-3">
     <form novalidate #form="ngForm" (submit)="onSubmitgetAllYearRangeFilteredCVEs(form)">
       <div class="form-group">
         <h5>Year range</h5>
@@ -18,7 +18,7 @@
     </form>
   </div>
 
-  <div class="col-5">
+  <div class="col-3">
     <form [formGroup]="myForm">
 
       <h4>Other filters</h4>
@@ -74,9 +74,19 @@
           </mat-select>
         </mat-form-field>
       </div>
+    </form>
+
+    <form novalidate #form="ngForm" (submit)="onSubmitclearFilters()">
+      <div class="form-group">
+        <button class="btn btn-success btn-sm btn-block" type="submit" [disabled]="form.invalid">Clear Filters</button>
+      </div>
+    </form>
+  </div>
 
 
       <!-- Load all confidentiality filtered CVEs -->
+  <div class="col-1">
+    <form [formGroup]="myFormCIA">
       <div class="form-group">
         <h4>CIA Triad</h4>
         <mat-form-field appearance="fill">
@@ -112,15 +122,10 @@
           </mat-select>
         </mat-form-field>
       </div>
-
     </form>
-  </div>
-  <div class="col-3">  <form novalidate #form="ngForm" (submit)="onSubmitclearFilters()">
-    <div class="form-group">
-      <button class="btn btn-success btn-sm btn-block" type="submit" [disabled]="form.invalid">Clear
-        Filters</button>
-    </div>
-  </form></div>
+  </div>   
+
+   
 
   
   </div>
@@ -128,7 +133,7 @@
 
   <!-- Search bar Filter -->
   <form appearance="standard">
-    <label>Search by keyword: </label>
+    <mat-label>Search by keyword: </mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="CVE, vulnerability, service, ..." #input>
   </form>
 

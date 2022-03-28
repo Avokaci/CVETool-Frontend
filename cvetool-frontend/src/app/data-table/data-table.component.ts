@@ -30,6 +30,7 @@ export class DataTableComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   myForm!: FormGroup;
+  myFormCIA!: FormGroup;
 
   expandedElement: Cve | null = null;
   data: Cve[] = [];
@@ -123,6 +124,10 @@ export class DataTableComponent implements AfterViewInit {
       access: '',
       complexity: '',
       authentication: '',
+    })
+
+    this.myFormCIA = this.fb.group({
+    
       confidentiality: '',
       intergrity: '',
       availability: ''
@@ -133,9 +138,9 @@ export class DataTableComponent implements AfterViewInit {
     this.myForm.controls['access'].valueChanges.subscribe(res => { this.onSubmitgetAccessFilteredCVEs(); this.selectedVuln = ''; this.selectedAuth = ''; this.selectedAvail = ''; this.selectedComplexity = ''; this.selectedConf = ''; this.selectedInteg = '';  })
     this.myForm.controls['complexity'].valueChanges.subscribe(res => { this.onSubmitgetComplexityFilteredCVEs(); this.selectedVuln = ''; this.selectedAccess = ''; this.selectedAuth = ''; this.selectedAvail = '';  this.selectedConf = ''; this.selectedInteg = '';  })
     this.myForm.controls['authentication'].valueChanges.subscribe(res => { this.onSubmitgetAuthFilteredCVEs(); this.selectedVuln = ''; this.selectedAccess = ''; this.selectedComplexity = ''; this.selectedAvail = '';  this.selectedConf = ''; this.selectedInteg = '';})
-    this.myForm.controls['confidentiality'].valueChanges.subscribe(res => { this.onSubmitgetConfidentialityFilteredCVEs(); this.selectedVuln = ''; this.selectedAccess = ''; this.selectedAuth = '';  this.selectedComplexity = ''; this.selectedAvail = '';  this.selectedInteg = '';})
-    this.myForm.controls['intergrity'].valueChanges.subscribe(res => { this.onSubmitgetIntegrityFilteredCVEs(); this.selectedVuln = ''; this.selectedAccess = ''; this.selectedAuth = '';  this.selectedComplexity = ''; this.selectedAvail = '';  this.selectedConf = ''; })
-    this.myForm.controls['availability'].valueChanges.subscribe(res => { this.onSubmitgetAvailabilityFilteredCVEs(); this.selectedVuln = ''; this.selectedAccess = ''; this.selectedAuth = '';  this.selectedComplexity = '';  this.selectedConf = ''; this.selectedInteg = '';})
+    this.myFormCIA.controls['confidentiality'].valueChanges.subscribe(res => { this.onSubmitgetConfidentialityFilteredCVEs(); this.selectedVuln = ''; this.selectedAccess = ''; this.selectedAuth = '';  this.selectedComplexity = ''; this.selectedAvail = '';  this.selectedInteg = '';})
+    this.myFormCIA.controls['intergrity'].valueChanges.subscribe(res => { this.onSubmitgetIntegrityFilteredCVEs(); this.selectedVuln = ''; this.selectedAccess = ''; this.selectedAuth = '';  this.selectedComplexity = ''; this.selectedAvail = '';  this.selectedConf = ''; })
+    this.myFormCIA.controls['availability'].valueChanges.subscribe(res => { this.onSubmitgetAvailabilityFilteredCVEs(); this.selectedVuln = ''; this.selectedAccess = ''; this.selectedAuth = '';  this.selectedComplexity = '';  this.selectedConf = ''; this.selectedInteg = '';})
 
   }
 
