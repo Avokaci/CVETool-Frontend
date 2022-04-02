@@ -1,133 +1,134 @@
 <div class="container">
   <div class="row">
     <div class="col-3">
-    <form novalidate #form="ngForm" (submit)="onSubmitgetAllYearRangeFilteredCVEs(form)">
-      <div class="form-group">
-        <h5>Year range</h5>
-        <ngx-slider [(value)]="yearValue" [(highValue)]="yearHighValue" [options]="yearOptions"></ngx-slider>
-        <button class="btn btn-success btn-sm btn-block" type="submit">Load</button>
-      </div>
-    </form>
+      <form novalidate #form="ngForm" (submit)="onSubmitgetAllYearRangeFilteredCVEs(form)">
+        <div class="form-group">
+          <h5>Year range</h5>
+          <ngx-slider [(value)]="yearValue" [(highValue)]="yearHighValue" [options]="yearOptions"></ngx-slider>
+          <button class="btn btn-success btn-sm btn-block" type="submit">Load</button>
+        </div>
+      </form>
 
-    <form novalidate #form="ngForm" (submit)="onSubmitgetAllScoreRangeFilteredCVEs(form)">
-      <div class="form-group">
-        <h5>Score range</h5>
-        <ngx-slider [(value)]="scoreValue" [(highValue)]="scoreHighValue" [options]="scoreOptions"></ngx-slider>
-        <button class="btn btn-success btn-sm btn-block" type="submit">Load</button>
-      </div>
-    </form>
-  </div>
+      <form novalidate #form="ngForm" (submit)="onSubmitgetAllScoreRangeFilteredCVEs(form)">
+        <div class="form-group">
+          <h5>Score range</h5>
+          <ngx-slider [(value)]="scoreValue" [(highValue)]="scoreHighValue" [options]="scoreOptions"></ngx-slider>
+          <button class="btn btn-success btn-sm btn-block" type="submit">Load</button>
+        </div>
+      </form>
+    </div>
 
-  <div class="col-3">
-    <form [formGroup]="myForm">
+    <div class="col-3">
+      <form [formGroup]="myForm">
 
-      <h4>Other filters</h4>
-      <!-- Load all vulnerability type filtered CVEs -->
-      <div class="form-group">
-        <h5>Vulnerability</h5>
-        <mat-form-field appearance="fill">
-          <mat-label>Vulnerability</mat-label>
-          <mat-select [(value)]="selectedVuln" formControlName="vulnerability">
-            <mat-option *ngFor="let vuln of vulnerabilities" [value]="vuln.value">
-              {{vuln.viewValue}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
+        <h4>Other filters</h4>
+        <!-- Load all vulnerability type filtered CVEs -->
+        <div class="form-group">
+          <h5>Vulnerability</h5>
+          <mat-form-field appearance="fill">
+            <mat-label>Vulnerability</mat-label>
+            <mat-select [(value)]="selectedVuln" formControlName="vulnerability">
+              <mat-option *ngFor="let vuln of vulnerabilities" [value]="vuln.value">
+                {{vuln.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
 
-      <!-- Load all access filtered CVEs -->
-      <div class="form-group">
-        <h5>Access</h5>
-        <mat-form-field appearance="fill">
-          <mat-label>Access</mat-label>
-          <mat-select [(value)]="selectedAccess" formControlName="access">
-            <mat-option *ngFor="let access of accesses" [value]="access.value">
-              {{access.viewValue}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
+        <!-- Load all access filtered CVEs -->
+        <div class="form-group">
+          <h5>Access</h5>
+          <mat-form-field appearance="fill">
+            <mat-label>Access</mat-label>
+            <mat-select [(value)]="selectedAccess" formControlName="access">
+              <mat-option *ngFor="let access of accesses" [value]="access.value">
+                {{access.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
 
-      <!-- Load all complexity filtered CVEs -->
-      <div class="form-group">
-        <h5>Complexity</h5>
-        <mat-form-field appearance="fill">
-          <mat-label>Complexity</mat-label>
-          <mat-select [(value)]="selectedComplexity" formControlName="complexity">
-            <mat-option *ngFor="let compl of complexities" [value]="compl.value">
-              {{compl.viewValue}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-
-
-      <!-- Load all authentication  filtered CVEs -->
-      <div class="form-group">
-        <h5>Authentication</h5>
-        <mat-form-field appearance="fill">
-          <mat-label>Authentication</mat-label>
-          <mat-select [(value)]="selectedAuth" formControlName="authentication">
-            <mat-option *ngFor="let auth of authentications" [value]="auth.value">
-              {{auth.viewValue}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-    </form>
-
-    <form novalidate #form="ngForm" (submit)="onSubmitclearFilters()">
-      <div class="form-group">
-        <button class="btn btn-success btn-sm btn-block" type="submit" [disabled]="form.invalid">Clear Filters</button>
-      </div>
-    </form>
-  </div>
+        <!-- Load all complexity filtered CVEs -->
+        <div class="form-group">
+          <h5>Complexity</h5>
+          <mat-form-field appearance="fill">
+            <mat-label>Complexity</mat-label>
+            <mat-select [(value)]="selectedComplexity" formControlName="complexity">
+              <mat-option *ngFor="let compl of complexities" [value]="compl.value">
+                {{compl.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
 
 
-      <!-- Load all confidentiality filtered CVEs -->
-  <div class="col-1">
-    <form [formGroup]="myFormCIA">
-      <div class="form-group">
-        <h4>CIA Triad</h4>
-        <mat-form-field appearance="fill">
-          <mat-label>Confidentiality</mat-label>
-          <mat-select [(value)]="selectedConf" formControlName="confidentiality">
-            <mat-option *ngFor="let conf of cia" [value]="conf.value">
-              {{conf.viewValue}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
+        <!-- Load all authentication  filtered CVEs -->
+        <div class="form-group">
+          <h5>Authentication</h5>
+          <mat-form-field appearance="fill">
+            <mat-label>Authentication</mat-label>
+            <mat-select [(value)]="selectedAuth" formControlName="authentication">
+              <mat-option *ngFor="let auth of authentications" [value]="auth.value">
+                {{auth.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </form>
 
-      <!-- Load all integrity filtered CVEs -->
-      <div class="form-group">
-        <mat-form-field appearance="fill">
-          <mat-label>Integrity</mat-label>
-          <mat-select [(value)]="selectedInteg" formControlName="intergrity">
-            <mat-option *ngFor="let inte of cia" [value]="inte.value">
-              {{inte.viewValue}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
+      <form novalidate #form="ngForm" (submit)="onSubmitclearFilters()">
+        <div class="form-group">
+          <button class="btn btn-success btn-sm btn-block" type="submit" [disabled]="form.invalid">Clear
+            Filters</button>
+        </div>
+      </form>
+    </div>
 
-      <!-- Load all availability filtered CVEs -->
-      <div class="form-group">
-        <mat-form-field appearance="fill">
-          <mat-label>Availability</mat-label>
-          <mat-select [(value)]="selectedAvail" formControlName="availability">
-            <mat-option *ngFor="let avai of cia" [value]="avai.value">
-              {{avai.viewValue}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-    </form>
-  </div>   
 
-   
+    <!-- Load all confidentiality filtered CVEs -->
+    <div class="col-1">
+      <form [formGroup]="myFormCIA">
+        <div class="form-group">
+          <h4>CIA Triad</h4>
+          <mat-form-field appearance="fill">
+            <mat-label>Confidentiality</mat-label>
+            <mat-select [(value)]="selectedConf" formControlName="confidentiality">
+              <mat-option *ngFor="let conf of cia" [value]="conf.value">
+                {{conf.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
 
-  
+        <!-- Load all integrity filtered CVEs -->
+        <div class="form-group">
+          <mat-form-field appearance="fill">
+            <mat-label>Integrity</mat-label>
+            <mat-select [(value)]="selectedInteg" formControlName="intergrity">
+              <mat-option *ngFor="let inte of cia" [value]="inte.value">
+                {{inte.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <!-- Load all availability filtered CVEs -->
+        <div class="form-group">
+          <mat-form-field appearance="fill">
+            <mat-label>Availability</mat-label>
+            <mat-select [(value)]="selectedAvail" formControlName="availability">
+              <mat-option *ngFor="let avai of cia" [value]="avai.value">
+                {{avai.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </form>
+    </div>
+
+
+
+
   </div>
 
 
@@ -141,12 +142,12 @@
     <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8" matSort>
       <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> {{column}} </th>
-        
+
         <div *ngIf="column == 'searchExploit'">
-          <td mat-cell *matCellDef="let element"><a href= {{element.searchExploit}}>  Search exploit</a></td>
-        </div>
+          <td mat-cell *matCellDef="let element"><a href={{element.searchExploit}}> Search exploit</a></td>
+        </div>        
         <td mat-cell *matCellDef="let element"> {{element[column]}}</td>
-       
+
       </ng-container>
 
       <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
